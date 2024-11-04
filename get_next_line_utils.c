@@ -26,6 +26,34 @@ char	*ft_strncpy(char *dst, const char *src, size_t n)
 	return (original_dst);
 }
 
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+		{
+			return ((char *)s);
+		}
+		s++;
+	}
+	if ((char)c == '\0')
+	{
+		return ((char *)s);
+	}
+	return (NULL);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*result;
+
+	result = malloc(ft_strlen(s) + 1);
+	if (!result)
+		return (NULL);
+	ft_strncpy(result, s, ft_strlen(s));
+	return (result);
+}
+
 char	*ft_strjoin(char *s1, const char *s2)
 {
 	size_t	len1;
@@ -45,32 +73,4 @@ char	*ft_strjoin(char *s1, const char *s2)
 	ft_strncpy(result + len1, s2, len1 + len2);
 	free(s1);
 	return (result);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*result;
-
-	result = malloc(ft_strlen(s) + 1);
-	if (!result)
-		return (NULL);
-	ft_strncpy(result, s, ft_strlen(s));
-	return (result);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-		{
-			return ((char *)s);
-		}
-		s++;
-	}
-	if ((char)c == '\0')
-	{
-		return ((char *)s);
-	}
-	return (NULL);
 }
