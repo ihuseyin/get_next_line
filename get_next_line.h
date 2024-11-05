@@ -4,8 +4,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// Remove this line if you gonna modify by yourself the buffer size value.
+#ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1024
+#endif
 
 size_t  ft_strlen(const char *str);
 char  *ft_strncpy(char *dst, const char *src, size_t n);
