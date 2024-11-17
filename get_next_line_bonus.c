@@ -23,11 +23,10 @@ static ssize_t	ft_get_remainder(int fd, char **remainder)
 {
 	ssize_t	bytes_read;
 	char	*buffer;
-	char	*new_remainder;
 
 	buffer = malloc(BUFFER_SIZE + 1);
 	if (!buffer)
-		return (0);
+		return (-1);
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read <= 0)
 	{
@@ -73,7 +72,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	readed_bytes = ft_get_remainder(fd, &remainder[fd]);
-	if (readed_bytes == 0 && (!remainder[fd] || remainder[fd][0] == '\0'))
+	if (readed_bytes <= 0 && (!remainder[fd] || remainder[fd][0] == '\0'))
 	{
 		free(remainder[fd]);
 		return (NULL);
