@@ -36,8 +36,7 @@ static ssize_t	ft_get_remainder(int fd, char **remainder)
 	buffer[bytes_read] = '\0';
 	if (*remainder)
 	{
-		new_remainder = ft_strjoin(*remainder, buffer);
-		*remainder = new_remainder;
+		*remainder = ft_strjoin(*remainder, buffer);
 	}
 	else
 		*remainder = ft_strdup(buffer);
